@@ -5,55 +5,19 @@
     
   <div class="panel-body">
     <% @messages.each do |message| %>
-      <span class="label"><%= message.name %></span>
+      <span class="label label-default"><%= message.name %></span>
+      <span class="label label-default"><%= message.age %></span>
       <%= message.body %>
       (<%= link_to "編集" , edit_message_path(message) %>)
       <%= link_to "削除" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
       <br>
     <% end %>
     
-    <%= form_for(@message) do |f| %>
-  <% if @message.errors.present? %>
-    <div class="alert alert-danger">
-      <%= alert %>
-      <ul>
-        <% @message.errors.full_messages.each do |full_message| %>
-          <li>
-            <%= full_message %>
-          </li>
-        <% end %> 
-      </ul>
-    </div>
-  <% end %>
-<div class="row">
-<div class="form-group">
-  <div class="col-xs-2">
-  名前:
-  <%= f.text_field :name, class: "form-control" %>
-  </div>
-</div>
-</div>
+    
+    
+    <%= render 'form' %>
 
-<div class="row">
-<div class="form-group">
-  <div class="col-xs-1">
-  年齢:
-  <%= f.text_field :age, class: "form-control" %>
-  </div>
-</div>
-</div>
-
-<div class="row">
-<div class="form-group">
-    <div class="col-xs-4">
-  内容:
-  <%= f.text_area :body, class: "form-control" %>
-   </div>
-</div>
-</div>
-
-<%= f.submit "投稿", class: "btn btn-sm btn-primary" %>
-<% end %>
+    
   </div>
 
 

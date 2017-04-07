@@ -1,4 +1,4 @@
-<%= form_for(@message) do |f| %>
+    <%= form_for(@message) do |f| %>
   <% if @message.errors.present? %>
     <div class="alert alert-danger">
       <%= alert %>
@@ -11,12 +11,32 @@
       </ul>
     </div>
   <% end %>
-
+<div class="row">
+<div class="form-group">
+  <div class="col-xs-2">
   名前:
-  <%= f.text_field :name %>
+  <%= f.text_field :name, class: "form-control" %>
+  </div>
+</div>
+</div>
 
+<div class="row">
+<div class="form-group">
+  <div class="col-xs-1">
+  年齢:
+  <%= f.text_field :age, class: "form-control" %>
+  </div>
+</div>
+</div>
+
+<div class="row">
+<div class="form-group">
+    <div class="col-xs-4">
   内容:
-  <%= f.text_field :body %>
-  
-  <button type="button" class="btn btn-warning btn-xs">投稿</button>
+  <%= f.text_area :body, class: "form-control" %>
+   </div>
+</div>
+</div>
+
+<%= f.submit "投稿", class: "btn btn-sm btn-primary" %>
 <% end %>
